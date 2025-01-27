@@ -18,7 +18,7 @@ class BaseSSLModel(BenchmarkModule):
         self.projection_head = None
         self.criterion = None
 
-    def configure_optimizers(self, lr_factor=1, max_epochs=200):
+    def configure_optimizers(self, lr_factor=1, max_epochs=50):
         """Configure optimizer and learning rate scheduler"""
         optim = torch.optim.SGD(
             self.parameters(), 
