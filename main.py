@@ -29,7 +29,7 @@ def main():
     config = {
         'max_epochs': 10,
         'batch_size': 128,
-        'n_runs': 3
+        'n_runs': 1
     }
 
     # Create benchmark workflow
