@@ -3,3 +3,5 @@ numpy
 matplotlib
 lightly
 tensorboard
+requests
+tarfile

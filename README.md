@@ -5,3 +5,4 @@ This project runs 3 sefl supervised models: Barlow Twins, SimCLr and MoCo. It in
 To run:
 
 1. Run the main.py folder
+2. 

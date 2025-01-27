@@ -2,13 +2,19 @@ from data_loader import DatasetManager
 from models import MODELS
 from benchmark import BenchmarkWorkflow
 from results_reporting import ResultsReporter
+from dataset_path import DatasetPaths
+
 
 def main():
     # Configuration
     #/home/ricardo/Documents/NLP Project/Project V2/imagenette2-320/
-    
-    PATH_TO_TRAIN = "/home/ricardo/Documents/NLP Project/Project V2/imagenette2-320/train"
-    PATH_TO_TEST = "/home/ricardo/Documents/NLP Project/Project V2/imagenette2-320/val"
+
+
+    # Initialize DatasetPaths and set paths
+    dataset_paths = DatasetPaths()
+
+    PATH_TO_TRAIN = dataset_paths.train_path
+    PATH_TO_TEST = dataset_paths.val_path
 
 
     # Create dataset manager
