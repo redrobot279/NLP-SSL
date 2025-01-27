@@ -1,0 +1,4 @@
+venv/
+imagenette2-320/
+__pycache__/
+benchmark_logs/
