@@ -103,7 +103,7 @@ class BenchmarkWorkflow:
             accelerator=self.accelerator,
             logger=logger,
             callbacks=[checkpoint_callback],
-            strategy='auto' if self.config['distributed'] else None,
+            strategy='auto',
             sync_batchnorm=self.config['sync_batchnorm']
         )
         
