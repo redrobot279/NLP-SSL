@@ -6,7 +6,7 @@ from lightly.transforms import (
 import torchvision
 from lightly.transforms.utils import IMAGENET_NORMALIZE
 
-from torchvision.transforms import v2
+from torchvision.transforms import v2 as transforms_v2
 
 class DatasetManager:
     def __init__(self, 
@@ -14,7 +14,7 @@ class DatasetManager:
                  path_to_test, 
                  input_size=128, 
                  batch_size=128, 
-                 num_workers=4):
+                 num_workers=2):
         """
         Initialize dataset manager with paths and configuration
         
@@ -45,6 +45,8 @@ class DatasetManager:
         test_transforms = torchvision.transforms.Compose([
             torchvision.transforms.Resize(self.input_size),
             torchvision.transforms.CenterCrop(128),
+            transforms_v2.ToImage(),  # Convert to tensor
+            transforms_v2.ToDtype(torch.float32, scale=True),  # Convert to float32 and scale           
             torchvision.transforms.ToTensor(),
             normalize_transform,
         ])
