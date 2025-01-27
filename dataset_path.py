@@ -12,8 +12,9 @@ class DatasetPaths:
         """
         self.dataset_url = "https://s3.amazonaws.com/fast-ai-imageclas/imagenette2-320.tgz"
         self.root_dir = root_dir
-        self.train_path = os.path.join(root_dir, "train")
-        self.val_path = os.path.join(root_dir, "val")
+        self.train_path = os.path.join(self.root_dir, "imagenette2-320/train")
+        self.val_path = os.path.join(self.root_dir, "imagenette2-320/val")
+
 
         # Prepare dataset
         self._download_and_extract_dataset()
