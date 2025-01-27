@@ -27,9 +27,9 @@ def main():
 
     # Benchmark configuration
     config = {
-        'max_epochs': 2,
+        'max_epochs': 10,
         'batch_size': 128,
-        'n_runs': 1
+        'n_runs': 3
     }
 
     # Create benchmark workflow
