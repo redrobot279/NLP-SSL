@@ -3,6 +3,7 @@ import torch
 import torch.nn as nn
 import torchvision
 from lightly import utils
+from lightly.models.utils import deactivate_requires_grad
 from lightly.models.modules import heads
 from lightly.loss import (
     NTXentLoss,
@@ -42,8 +43,8 @@ class MocoModel(BaseSSLModel):
         self.projection_head = heads.MoCoProjectionHead(feature_dim, 2048, 128)
         self.backbone_momentum = copy.deepcopy(self.backbone)
         self.projection_head_momentum = copy.deepcopy(self.projection_head)
-        utils.deactivate_requires_grad(self.backbone_momentum)
-        utils.deactivate_requires_grad(self.projection_head_momentum)
+        deactivate_requires_grad(self.backbone_momentum)
+        deactivate_requires_grad(self.projection_head_momentum)
 
         # Create our loss with the optional memory bank
         self.criterion = NTXentLoss(

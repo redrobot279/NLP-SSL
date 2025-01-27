@@ -27,7 +27,7 @@ def main():
 
     # Benchmark configuration
     config = {
-        'max_epochs': 10,
+        'max_epochs': 2,
         'batch_size': 128,
         'n_runs': 1
     }
