@@ -46,10 +46,15 @@ class BenchmarkWorkflow:
         self.models = models
         
         # Detect available hardware
-        self.devices = (torch.cuda.device_count() 
-                        if torch.cuda.is_available() 
-                        else 1)
-        self.accelerator = "gpu" if torch.cuda.is_available() else "cpu"
+        self.devices = "auto"
+        self.accelerator = "auto"
+         # Ensure distributed or single GPU configuration
+        if self.config.get("distributed", False):
+            self.devices = list(range(torch.cuda.device_count()))  # All GPUs
+    
+         # Enable sync batchnorm if distributed
+        self.sync_batchnorm = self.config.get("sync_batchnorm", False)
+    
         
         # Initialize results storage
         self.results = {}
