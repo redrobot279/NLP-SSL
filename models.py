@@ -4,6 +4,7 @@ import torch.nn as nn
 import torchvision
 from lightly import utils
 from lightly.models.utils import deactivate_requires_grad
+from lightly.models.utils import update_momentum
 from lightly.models.modules import heads
 from lightly.loss import (
     NTXentLoss,
@@ -60,8 +61,8 @@ class MocoModel(BaseSSLModel):
         (x0, x1), _, _ = batch
 
         # Update momentum
-        utils.update_momentum(self.backbone, self.backbone_momentum, 0.99)
-        utils.update_momentum(self.projection_head, self.projection_head_momentum, 0.99)
+        update_momentum(self.backbone, self.backbone_momentum, 0.99)
+        update_momentum(self.projection_head, self.projection_head_momentum, 0.99)
 
         def step(x0_, x1_):
             x1_, shuffle = utils.batch_shuffle(x1_, distributed=self.distributed)
