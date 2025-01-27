@@ -53,7 +53,7 @@ class MocoModel(BaseSSLModel):
         self.criterion = NTXentLoss(
             temperature=0.1, memory_bank_size=(memory_bank_size, 128)
         )
-        #self.distributed = distributed
+        self.distributed = distributed
 
     def forward(self, x):
         x = self.backbone(x).flatten(start_dim=1)
