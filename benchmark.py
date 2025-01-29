@@ -30,7 +30,7 @@ class BenchmarkWorkflow:
         # Default configuration with optional overrides
         self.default_config = {
             'logs_root_dir': os.path.join(os.getcwd(), "benchmark_logs"),
-            'max_epochs': 10,
+            'max_epochs': 100,
             'batch_size': 128,
             'num_classes': 10,
             'n_runs': 3,
