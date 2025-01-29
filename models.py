@@ -27,7 +27,7 @@ class BaseSSLModel(BenchmarkModule):
         optim = torch.optim.SGD(
             self.parameters(), 
             lr=6e-2 * lr_factor, 
-            momentum=0.9, 
+            momentum=0.99, 
             weight_decay=5e-4
         )
         cosine_scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optim, max_epochs)

@@ -42,10 +42,10 @@ class DatasetManager:
 
         # Test transforms
         test_transforms = torchvision.transforms.Compose([
-            torchvision.transforms.Resize(self.input_size),
-            torchvision.transforms.CenterCrop(128),
-            torchvision.transforms.ToTensor(),
-            normalize_transform,
+            torchvision.transforms.Resize(self.input_size), # Resize image to specified input size
+            torchvision.transforms.CenterCrop(128), # Center crop to 128x128
+            torchvision.transforms.ToTensor(), #convert to tensor
+            normalize_transform, #normalize using ImageNet statistics
         ])
 
         return {
