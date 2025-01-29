@@ -22,32 +22,18 @@ class BaseSSLModel(BenchmarkModule):
         self.projection_head = None
         self.criterion = None
 
-    def configure_optimizers(self, lr_factor=1, max_epochs=100):  # Increased epochs
-        """Configure optimizer and learning rate scheduler with warmup"""
+    def configure_optimizers(self, lr_factor=1, max_epochs=100):  
+
         optim = torch.optim.SGD(
             self.parameters(), 
             lr=6e-2 * lr_factor, 
             momentum=0.9,  # Standard momentum value
-            weight_decay=1e-4  # Adjusted weight decay
+            weight_decay=1e-4  # Weight decay
         )
         
-        # Warmup scheduler
-        warmup_epochs = 10
-        scheduler = {
-            'scheduler': torch.optim.lr_scheduler.OneCycleLR(
-                optim,
-                max_lr=6e-2 * lr_factor,
-                epochs=max_epochs,
-                steps_per_epoch=1,  # Adjust based on your dataloader
-                pct_start=warmup_epochs/max_epochs
-            ),
-            'interval': 'epoch',
-            'name': 'learning_rate'
-        }
-        
-        return [optim], [scheduler]
-        #cosine_scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optim, max_epochs)
-        #return [optim], [cosine_scheduler]
+
+        cosine_scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optim, max_epochs)
+        return [optim], [cosine_scheduler]
 
 class MocoModel(BaseSSLModel):
     def __init__(self, dataloader_kNN, num_classes, memory_bank_size=4096, distributed=False):
