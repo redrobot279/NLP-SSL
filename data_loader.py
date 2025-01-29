@@ -48,22 +48,17 @@ class DatasetManager:
             normalize_transform, #normalize using ImageNet statistics
         ])
 
-        # Update BYOL and SimCLR transforms to use v
-        byol_transform =  BYOLTransform(
-                view_1_transform=BYOLView1Transform(input_size=self.input_size),
-                view_2_transform=BYOLView2Transform(input_size=self.input_size),
-            ),
-        
-
-        simclr_transform = SimCLRTransform(
-                input_size=self.input_size,
-                cj_strength=0.5,
-            )
 
         return {
             'test': test_transforms,
-            'byol': byol_transform,
-            'simclr': simclr_transform
+            'byol': BYOLTransform(
+                view_1_transform=BYOLView1Transform(input_size=self.input_size),
+                view_2_transform=BYOLView2Transform(input_size=self.input_size),
+            ),
+            'simclr': SimCLRTransform(
+                input_size=self.input_size,
+                cj_strength=0.5,
+            )
         }
 
     def get_datasets(self, model_class):
