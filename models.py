@@ -28,7 +28,7 @@ class BaseSSLModel(BenchmarkModule):
             self.parameters(), 
             lr=6e-2 * lr_factor, 
             momentum=0.9,  # Standard momentum value
-            weight_decay=1e-4  # Weight decay
+            weight_decay=5e-4  # Weight decay
         )
         
 
