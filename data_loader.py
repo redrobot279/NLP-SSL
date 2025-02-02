@@ -1,8 +1,6 @@
 import torch
 from lightly.data import LightlyDataset
-from lightly.transforms import (
-    BYOLTransform, BYOLView1Transform, BYOLView2Transform,SimCLRTransform, 
-)
+from lightly.transforms import (BYOLTransform, BYOLView1Transform, BYOLView2Transform,SimCLRTransform)
 import torchvision
 from lightly.transforms.utils import IMAGENET_NORMALIZE
 

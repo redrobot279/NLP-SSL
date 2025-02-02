@@ -7,15 +7,6 @@ from pytorch_lightning.loggers import TensorBoardLogger
 from typing import List, Type, Dict, Any
 
 class BenchmarkWorkflow:
-    """
-    A comprehensive workflow for benchmarking self-supervised learning models
-    
-    Key Features:
-    - Supports multiple models and runs
-    - Flexible configuration
-    - Detailed performance tracking
-    - Hardware-aware execution
-    """
     
     def __init__(self, 
                  models: List[Type],

@@ -6,9 +6,6 @@ from dataset_path import DatasetPaths
 
 
 def main():
-    # Configuration
-    #/home/ricardo/Documents/NLP Project/Project V2/imagenette2-320/
-
 
     # Initialize DatasetPaths and set paths
     dataset_paths = DatasetPaths()
